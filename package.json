@@ -11,7 +11,7 @@
     "preprocess"
   ],
   "author": "Rich D J Palmer",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "find": "^0.2.4",
     "mkdirp": "^0.5.1",
