@@ -1,6 +1,6 @@
 {
   "name": "cli-preprocess",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A cli wrapper for jsoverson/preprocess",
   "main": "index.js",
   "scripts": {
