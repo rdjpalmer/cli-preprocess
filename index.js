@@ -14,12 +14,30 @@ function filterIgnorePath(file) {
   return file.indexOf(program.ignore) < 0;
 }
 
+function getFileFromPath(fileWithPath) {
+  const pathArr = fileWithPath.split('/');
+  return pathArr[pathArr.length - 1];
+}
+
+function getFileName(fileNameWithExtension) {
+  const fileNameArr = fileNameWithExtension.split('.');
+  fileNameArr.splice(fileNameArr.length - 1, 1);
+  return fileNameArr.join('.');
+}
+
+function getFileExtension(fileNameWithExtension) {
+  const fileNameArr = fileNameWithExtension.split('.');
+  return fileNameArr[fileNameArr.length - 1];
+}
+
 function processFile(file) {
-  const splitFileName = file.split('.');
-  const extension = splitFileName[splitFileName.length - 1];
-  splitFileName.splice(splitFileName.length - 1, 1);
-  const fileName = splitFileName.join('.');
+  const fileWithExtension = getFileFromPath(file);
+  const fileName = getFileName(fileWithExtension);
+  const extension = getFileExtension(fileWithExtension);
+
   const outputFileLocation = `${program.output}${fileName}.${extension}`;
+
+  console.log(file, fileName, program.output, outputFileLocation);
 
   mkdirp(program.output, err => {
     if (err) {
