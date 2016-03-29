@@ -47,6 +47,8 @@ function processFile(file) {
           console.error(err);
           throw err;
         }
+
+        if (!program.quiet) process.stdout.write(`processed: ${outputFileLocation} \n`);
       });
     }
   });  
@@ -57,6 +59,7 @@ program
   .option('-i, --ignore <ignore path>', 'The folders/files to ignore')
   .option('-o, --output <output folder>', 'The folder to output the processed to')
   .option('-e, --extension <file extension>', 'The syntax type of source string to preprocess: html, xml, js, javascript, jsx, c, cc, cpp, cs, csharp, java, less, sass, scss, css, php, ts, tsx, peg, pegjs, jade, styl, coffee, bash, shell, sh')
+  .option('-q, --quiet', 'Sets the cli to run quietly, without printing to stdout')
   .action((path) => {
     const regexPattern = program.extension ? `^(.*)${program.extension}$` : '^(.*).htm(l?)$';
     const regex = new RegExp(regexPattern);
