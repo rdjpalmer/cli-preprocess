@@ -37,8 +37,6 @@ function processFile(file) {
 
   const outputFileLocation = `${program.output}${fileName}.${extension}`;
 
-  console.log(file, fileName, program.output, outputFileLocation);
-
   mkdirp(program.output, err => {
     if (err) {
       console.error(err);
